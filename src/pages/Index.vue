@@ -1,5 +1,11 @@
 <template>
   <q-page class="row flex flex-center">
+    <q-banner v-if="submittedForm" inline-actions class="text-white" :class="(selectedFont !== rightFont) ? 'bg-red' : 'bg-green'">
+      The right answer was: {{fonts[rightFont]}}
+      <template v-slot:action>
+        <q-btn @click="nextQuestion()" flat color="white" label="Dismis" />
+      </template>
+    </q-banner>
     <div class="row col-12">
       <div class="col-2"></div>
       <div class="row col-8">
@@ -7,7 +13,7 @@
           <p style="color: red">Could you guess the name of this font?</p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <strong style="font-family: 'Montserrat'">Lorum epsum lora epsu aloper epsis</strong>
+          <strong :style="{'font-family': fonts[rightFont]}">Lorum epsum lora epsu aloper epsis</strong>
         </div>
       </div>
       <div class="col-2"></div>
@@ -21,8 +27,8 @@
         </q-item-section>
 
         <q-item-section>
-          <q-item-label>{{font.name}}</q-item-label>
-          <q-item-label :style="{'font-family': (submittedForm ? font.name : null)}" caption>
+          <q-item-label>{{font}}</q-item-label>
+          <q-item-label :style="{'font-family': (submittedForm ? font : null)}" caption>
             This text will use the parent font. You should submit the form first.
           </q-item-label>
         </q-item-section>
@@ -43,32 +49,20 @@ export default {
   data () {
     return {
       fonts: [
-        {
-          name: 'Roboto',
-          url: 'xxx'
-        },
-        {
-          name: 'Lato',
-          url: 'xxx'
-        },
-        {
-          name: 'Farro',
-          url: 'xxx'
-        },
-        {
-          name: 'Fira Code',
-          url: 'xxx'
-        }
+        'Roboto',
+        'Lato',
+        'Farro',
+        'Fira Code'
       ],
       selectedFont: undefined,
-      rightFont: 2,
+      rightFont: 3,
       submittedForm: false
     }
   },
   methods: {
     submit () {
-      this.submittedForm = true;
-      (this.selectedFont && this.rightFont && this.selectedFont === this.rightFont) ? alert(true) : alert(false)
+      this.submittedForm = true
+      // (this.selectedFont && this.rightFont && this.selectedFont === this.rightFont) POST THE SUBMIT TO THE API
     },
     nextQuestion () {
       this.selectedFont = undefined
