@@ -13,7 +13,7 @@
           <p style="color: red">Could you guess the name of this font?</p>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <strong :style="{'font-family': fonts[rightFont]}">Lorum epsum lora epsu aloper epsis</strong>
+          <p :style="{'font-family': fonts[rightFont]}">Lorum epsum lora epsu aloper epsis</p>
         </div>
       </div>
       <div class="col-2"></div>
@@ -67,7 +67,15 @@ export default {
     nextQuestion () {
       this.selectedFont = undefined
       this.submittedForm = false
+      this.$axios.get('http://localhost:1337/question')
+        .then(response => {
+          this.fonts = response.data
+          this.rightFont = Math.floor(Math.random() * (3 - 0 + 1)) + 0
+        })
     }
+  },
+  created () {
+    this.nextQuestion()
   }
 }
 </script>
