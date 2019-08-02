@@ -3,6 +3,9 @@ const routes = [
   {
     path: '/',
     component: () => import('layouts/MyLayout.vue'),
+    meta: {
+      requiresAuth: true
+    },
     children: [
       { path: '', component: () => import('pages/Index.vue') }
     ]
@@ -10,13 +13,19 @@ const routes = [
   {
     path: '/ranking',
     component: () => import('layouts/MyLayout.vue'),
+    meta: {
+      requiresAuth: true
+    },
     children: [
       { path: '', component: () => import('pages/Ranking.vue') }
     ]
   },
   {
-    path: '/auth',
+    path: '/signin',
     component: () => import('layouts/MyLayout.vue'),
+    meta: {
+      guest: true
+    },
     children: [
       { path: '', component: () => import('pages/Auth.vue') }
     ]
