@@ -46,7 +46,11 @@ module.exports = function (ctx) {
         'QItemSection',
         'QItemLabel',
         'QRadio',
-        'QBanner'
+        'QBanner',
+        'QField',
+        'QInput',
+        'QTabs',
+        'QTab'
       ],
 
       directives: [
