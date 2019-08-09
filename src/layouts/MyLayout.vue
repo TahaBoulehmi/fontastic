@@ -45,6 +45,15 @@
             <q-item-label caption>Ranking</q-item-label>
           </q-item-section>
         </q-item>
+        <q-item clickable @click="logout()">
+          <q-item-section avatar>
+            <q-icon name="computer" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Logout</q-item-label>
+            <q-item-label caption>Logout</q-item-label>
+          </q-item-section>
+        </q-item>
         <q-item clickable tag="a" target="_blank" href="https://github.com/TahaBoulehmi/fontastic">
           <q-item-section avatar>
             <q-icon name="code" />
@@ -92,7 +101,12 @@ export default {
     }
   },
   methods: {
-    openURL
+    openURL,
+    logout () {
+      this.$q.sessionStorage.set('email', null)
+      this.$q.sessionStorage.set('password', null)
+      this.$router.push('/signin')
+    }
   }
 }
 </script>

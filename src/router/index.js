@@ -26,16 +26,16 @@ export default function (/* { store, ssrContext } */) {
 
   Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      axios.get('http://localhost:1337/isloggedin', { email: SessionStorage.getItem('email').replace('__q_strn|', ''), password: SessionStorage.getItem('password').replace('__q_strn|', '') }).then(response => {
+      axios.put('http://localhost:1337/signin', { email: SessionStorage.getItem('email').replace('__q_strn|', ''), password: SessionStorage.getItem('password').replace('__q_strn|', '') }).then(response => {
         next()
-      }).catch(function () {
+      }).catch(function (response) {
         next({
           path: '/signin',
           params: { nextUrl: to.fullPath }
         })
       })
     } else if (to.matched.some(record => record.meta.guest)) {
-      axios.get('http://localhost:1337/isloggedin', { email: SessionStorage.getItem('email').replace('__q_strn|', ''), password: SessionStorage.getItem('password').replace('__q_strn|', '') }).then(response => {
+      axios.put('http://localhost:1337/isloggedin', { email: SessionStorage.getItem('email').replace('__q_strn|', ''), password: SessionStorage.getItem('password').replace('__q_strn|', '') }).then(response => {
         next({
           path: '/'
         })
