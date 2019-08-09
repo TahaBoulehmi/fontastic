@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import routes from './routes'
 const axios = require('axios')
+import { SessionStorage } from 'quasar'
 
 Vue.use(VueRouter)
 
@@ -25,7 +26,7 @@ export default function (/* { store, ssrContext } */) {
 
   Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      axios.get('http://localhost:1337/isloggedin').then(response => {
+      axios.get('http://localhost:1337/isloggedin', { email: SessionStorage.getItem('email').replace('__q_strn|', ''), password: SessionStorage.getItem('password').replace('__q_strn|', '') }).then(response => {
         next()
       }).catch(function () {
         next({
@@ -34,7 +35,7 @@ export default function (/* { store, ssrContext } */) {
         })
       })
     } else if (to.matched.some(record => record.meta.guest)) {
-      axios.get('http://localhost:1337/isloggedin').then(response => {
+      axios.get('http://localhost:1337/isloggedin', { email: SessionStorage.getItem('email').replace('__q_strn|', ''), password: SessionStorage.getItem('password').replace('__q_strn|', '') }).then(response => {
         next({
           path: '/'
         })

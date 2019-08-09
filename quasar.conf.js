@@ -59,7 +59,9 @@ module.exports = function (ctx) {
 
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'SessionStorage',
+        'LocalStorage'
       ]
     },
 

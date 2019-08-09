@@ -86,8 +86,8 @@ export default {
   data () {
     return {
       fullName: '',
-      email: '',
-      password: '',
+      email: 'dqwdqwddddddddqwdq@gmail.com',
+      password: 'dqwdqwd',
       loginPage: true,
       tab: 'Signin',
       submittedForm: false
@@ -101,16 +101,19 @@ export default {
   methods: {
     login () {
       this.$axios.put('http://localhost:1337/signin', { email: this.email, password: this.password }).then(response => {
-        // get body data
-      }).catch(function () {
+        this.$q.sessionStorage.set("email", this.email)
+        this.$q.sessionStorage.set("password", this.password)
+        this.$router.push('/')
+      }).catch(() => {
         this.submittedForm = true
       })
     },
     signup () {
       this.$axios.post('http://localhost:1337/signup', { email: this.email, fullName: this.fullName, password: this.password }).then(response => {
-        // get body data
-        this.someData = response.body
-      }).catch(function () {
+        this.$q.sessionStorage.set("email", this.email)
+        this.$q.sessionStorage.set("password", this.password)
+        this.$router.push('/')
+      }).catch(() => {
         this.submittedForm = true
       })
     }
