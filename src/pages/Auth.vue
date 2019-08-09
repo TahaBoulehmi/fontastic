@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     login () {
-      this.$axios.put('http://localhost:1337/signin', { email: this.email, password: this.password }).then(response => {
+      this.$axios.put('http://development.tamismart.com:919/signin', { email: this.email, password: this.password }).then(response => {
         this.$q.sessionStorage.set("email", this.email)
         this.$q.sessionStorage.set("password", this.password)
         this.$router.push('/')
@@ -109,7 +109,7 @@ export default {
       })
     },
     signup () {
-      this.$axios.post('http://localhost:1337/signup', { email: this.email, fullName: this.fullName, password: this.password }).then(response => {
+      this.$axios.post('http://development.tamismart.com:919/signup', { email: this.email, fullName: this.fullName, password: this.password }).then(response => {
         this.$q.sessionStorage.set("email", this.email)
         this.$q.sessionStorage.set("password", this.password)
         this.$router.push('/')

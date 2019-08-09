@@ -72,13 +72,13 @@
             <q-item-label caption>@tahaboulehmi</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable tag="a" target="_blank" href="https://fontastic.btaha.com">
+        <q-item clickable tag="a" target="_blank" href="https://fontastic.netlify.com">
           <q-item-section avatar>
             <q-icon name="public" />
           </q-item-section>
           <q-item-section>
             <q-item-label>Website</q-item-label>
-            <q-item-label caption>fontastic.btaha.com</q-item-label>
+            <q-item-label caption>fontastic.netlify.com</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>

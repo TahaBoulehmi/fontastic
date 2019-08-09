@@ -62,13 +62,12 @@ export default {
   methods: {
     submit () {
       this.submittedForm = true
-      // (this.selectedFont && this.rightFont && this.selectedFont === this.rightFont) POST THE SUBMIT TO THE API
-      this.$axios.post('http://localhost:1337/submit', {email: this.$q.sessionStorage.getItem("email"), password: this.$q.sessionStorage.getItem("password"), rightAnswer: (this.selectedFont === this.rightFont)})
+      this.$axios.post('http://development.tamismart.com:919/submit', {email: this.$q.sessionStorage.getItem("email"), password: this.$q.sessionStorage.getItem("password"), rightAnswer: (this.selectedFont === this.rightFont)})
     },
     nextQuestion () {
       this.selectedFont = undefined
       this.submittedForm = false
-      this.$axios.get('http://localhost:1337/question')
+      this.$axios.get('http://development.tamismart.com:919/question')
         .then(response => {
           this.fonts = response.data
           this.rightFont = Math.floor(Math.random() * (3 - 0 + 1)) + 0

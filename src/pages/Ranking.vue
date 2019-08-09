@@ -37,7 +37,7 @@ export default {
     }
   },
   created () {
-    this.$axios.get('http://localhost:1337/ranking')
+    this.$axios.get('http://development.tamismart.com:919/ranking')
     .then(response => {
       this.ranking = response.data.users
     })
