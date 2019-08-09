@@ -26,7 +26,7 @@ export default function (/* { store, ssrContext } */) {
 
   Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      axios.put('http://localhost:1337/signin', { email: SessionStorage.getItem('email').replace('__q_strn|', ''), password: SessionStorage.getItem('password').replace('__q_strn|', '') }).then(response => {
+      axios.put('http://localhost:1337/signin', { email: SessionStorage.getItem('email')? SessionStorage.getItem('email').replace('__q_strn|', '') : null, password: SessionStorage.getItem('password')? SessionStorage.getItem('password').replace('__q_strn|', '') : null }).then(response => {
         next()
       }).catch(function (response) {
         next({
@@ -35,7 +35,7 @@ export default function (/* { store, ssrContext } */) {
         })
       })
     } else if (to.matched.some(record => record.meta.guest)) {
-      axios.put('http://localhost:1337/isloggedin', { email: SessionStorage.getItem('email').replace('__q_strn|', ''), password: SessionStorage.getItem('password').replace('__q_strn|', '') }).then(response => {
+      axios.put('http://localhost:1337/isloggedin', { email: SessionStorage.getItem('email')? SessionStorage.getItem('email').replace('__q_strn|', '') : null, password: SessionStorage.getItem('password')? SessionStorage.getItem('password').replace('__q_strn|', '') : null }).then(response => {
         next({
           path: '/'
         })
