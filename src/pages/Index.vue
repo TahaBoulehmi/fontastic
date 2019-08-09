@@ -48,12 +48,7 @@ export default {
   name: 'PageIndex',
   data () {
     return {
-      fonts: [
-        'Roboto',
-        'Lato',
-        'Farro',
-        'Fira Code'
-      ],
+      fonts: [],
       selectedFont: undefined,
       rightFont: 3,
       submittedForm: false
@@ -70,7 +65,7 @@ export default {
       this.$axios.get('https://api.fontastic.btaha.com/question')
         .then(response => {
           this.fonts = response.data
-          this.rightFont = Math.floor(Math.random() * (3 - 0 + 1)) + 0
+          this.rightFont = Math.floor(Math.random() * (this.fonts.length - 0 + 1)) + 0
         })
     }
   },
