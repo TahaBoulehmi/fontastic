@@ -100,7 +100,7 @@ export default {
   },
   methods: {
     login () {
-      this.$axios.put('http://development.tamismart.com:919/signin', { email: this.email, password: this.password }).then(response => {
+      this.$axios.put('https://api.fontastic.btaha.com/signin', { email: this.email, password: this.password }).then(response => {
         this.$q.sessionStorage.set("email", this.email)
         this.$q.sessionStorage.set("password", this.password)
         this.$router.push('/')
@@ -109,7 +109,7 @@ export default {
       })
     },
     signup () {
-      this.$axios.post('http://development.tamismart.com:919/signup', { email: this.email, fullName: this.fullName, password: this.password }).then(response => {
+      this.$axios.post('https://api.fontastic.btaha.com/signup', { email: this.email, fullName: this.fullName, password: this.password }).then(response => {
         this.$q.sessionStorage.set("email", this.email)
         this.$q.sessionStorage.set("password", this.password)
         this.$router.push('/')
