@@ -37,7 +37,7 @@ export default {
     }
   },
   created () {
-    this.$axios.get('http://development.tamismart.com:919/ranking')
+    this.$axios.get('https://api.fontastic.btaha.com/ranking')
     .then(response => {
       this.ranking = response.data.users
     })

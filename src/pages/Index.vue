@@ -62,12 +62,12 @@ export default {
   methods: {
     submit () {
       this.submittedForm = true
-      this.$axios.post('http://development.tamismart.com:919/submit', {email: this.$q.sessionStorage.getItem("email"), password: this.$q.sessionStorage.getItem("password"), rightAnswer: (this.selectedFont === this.rightFont)})
+      this.$axios.post('https://api.fontastic.btaha.com/submit', {email: this.$q.sessionStorage.getItem("email"), password: this.$q.sessionStorage.getItem("password"), rightAnswer: (this.selectedFont === this.rightFont)})
     },
     nextQuestion () {
       this.selectedFont = undefined
       this.submittedForm = false
-      this.$axios.get('http://development.tamismart.com:919/question')
+      this.$axios.get('https://api.fontastic.btaha.com/question')
         .then(response => {
           this.fonts = response.data
           this.rightFont = Math.floor(Math.random() * (3 - 0 + 1)) + 0

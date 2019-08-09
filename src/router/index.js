@@ -26,7 +26,7 @@ export default function (/* { store, ssrContext } */) {
 
   Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      axios.put('http://development.tamismart.com:919/signin', { email: SessionStorage.getItem('email') ? SessionStorage.getItem('email').replace('__q_strn|', '') : null, password: SessionStorage.getItem('password') ? SessionStorage.getItem('password').replace('__q_strn|', '') : null }).then(response => {
+      axios.put('https://api.fontastic.btaha.com/signin', { email: SessionStorage.getItem('email') ? SessionStorage.getItem('email').replace('__q_strn|', '') : null, password: SessionStorage.getItem('password') ? SessionStorage.getItem('password').replace('__q_strn|', '') : null }).then(response => {
         next()
       }).catch(function (response) {
         next({
@@ -35,7 +35,7 @@ export default function (/* { store, ssrContext } */) {
         })
       })
     } else if (to.matched.some(record => record.meta.guest)) {
-      axios.put('http://development.tamismart.com:919/isloggedin', { email: SessionStorage.getItem('email') ? SessionStorage.getItem('email').replace('__q_strn|', '') : null, password: SessionStorage.getItem('password') ? SessionStorage.getItem('password').replace('__q_strn|', '') : null }).then(response => {
+      axios.put('https://api.fontastic.btaha.com/isloggedin', { email: SessionStorage.getItem('email') ? SessionStorage.getItem('email').replace('__q_strn|', '') : null, password: SessionStorage.getItem('password') ? SessionStorage.getItem('password').replace('__q_strn|', '') : null }).then(response => {
         next({
           path: '/'
         })
