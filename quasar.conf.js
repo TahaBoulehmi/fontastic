@@ -50,7 +50,8 @@ module.exports = function (ctx) {
         'QField',
         'QInput',
         'QTabs',
-        'QTab'
+        'QTab',
+        'QMarkupTable'
       ],
 
       directives: [
