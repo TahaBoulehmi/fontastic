@@ -86,8 +86,8 @@ export default {
   data () {
     return {
       fullName: '',
-      email: 'dqwdqwddddddddqwdq@gmail.com',
-      password: 'dqwdqwd',
+      email: '',
+      password: '',
       loginPage: true,
       tab: 'Signin',
       submittedForm: false
