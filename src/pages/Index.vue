@@ -63,6 +63,7 @@ export default {
     submit () {
       this.submittedForm = true
       // (this.selectedFont && this.rightFont && this.selectedFont === this.rightFont) POST THE SUBMIT TO THE API
+      this.$axios.post('http://localhost:1337/submit', {email: this.$q.sessionStorage.getItem("email"), password: this.$q.sessionStorage.getItem("password"), rightAnswer: (this.selectedFont === this.rightFont)})
     },
     nextQuestion () {
       this.selectedFont = undefined
