@@ -144,7 +144,7 @@ module.exports = function (ctx) {
     },
 
     cordova: {
-      // id: 'app.fontastic.com',
+       id: 'app.fontastic.com',
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 
